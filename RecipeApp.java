@@ -9,7 +9,7 @@
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.07.2026
+ * Date/Version: 04.14.2026
  */
 
 /**
@@ -23,12 +23,19 @@ public class RecipeApp
     {
         System.out.println("Recipe Manager started.");
 
-        // Temporary test objects (for Week 2 progress)
         Ingredient ingredient1 = new Ingredient("Flour", "2 cups");
         Ingredient ingredient2 = new Ingredient("Milk", "1 cup");
 
         System.out.println("Ingredients created:");
         System.out.println(ingredient1);
         System.out.println(ingredient2);
+
+        RecipeManager manager = new RecipeManager();
+        DessertRecipe dessert = new DessertRecipe("Brownies", "Dessert", 35);
+
+        manager.addRecipe(dessert);
+
+        System.out.println("Number of recipes: " + manager.getNumberOfRecipes());
+        System.out.println("Recipe added: " + dessert.getName());
     }
 }

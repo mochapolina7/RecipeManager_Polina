@@ -13,9 +13,10 @@
  */
 
 /**
- * Purpose: The responsibility of Ingredient is to store information about a recipe ingredient.
+ * Purpose: The responsibility of Ingredient is to store information about one recipe ingredient.
  *
- * Ingredient is a simple class used within Recipe.
+ * Ingredient is a simple class.
+ * Ingredient has-a name and quantity.
  */
 public class Ingredient
 {
