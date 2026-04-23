@@ -9,12 +9,9 @@
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.07.2026
- */
-
-/**
- * Purpose: The responsibility of Ingredient is to store information about one recipe ingredient.
+ * Date/Version: 04.23.2026
  *
+ * Responsibilities of class:
  * Ingredient is a simple class.
  * Ingredient has-a name and quantity.
  */

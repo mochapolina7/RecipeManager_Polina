@@ -12,11 +12,11 @@
  * Date/Version: 04.23.2026
  *
  * Responsibilities of class:
- * DessertRecipe is-a Recipe.
+ * MainCourseRecipe is-a Recipe.
  */
-public class DessertRecipe extends Recipe
+public class MainCourseRecipe extends Recipe
 {
-    public DessertRecipe(String name, String category, int cookTime, String instructions)
+    public MainCourseRecipe(String name, String category, int cookTime, String instructions)
     {
         super(name, category, cookTime, instructions);
     }

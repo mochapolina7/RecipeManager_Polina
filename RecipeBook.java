@@ -11,13 +11,11 @@ import java.util.ArrayList;
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.14.2026
- */
-
-/**
- * Purpose: The responsibility of RecipeBook is to store and manage recipes.
+ * Date/Version: 04.23.2026
  *
+ * Responsibilities of class:
  * RecipeBook has-many Recipe objects.
+ * RecipeBook stores and manages a collection of recipes.
  */
 public class RecipeBook
 {
@@ -25,7 +23,7 @@ public class RecipeBook
 
     public RecipeBook()
     {
-        recipes = new ArrayList<>();
+        recipes = new ArrayList<Recipe>();
     }
 
     public void addRecipe(Recipe recipe)
@@ -38,13 +36,25 @@ public class RecipeBook
         recipes.remove(recipe);
     }
 
+    public int getNumberOfRecipes()
+    {
+        return recipes.size();
+    }
+
     public ArrayList<Recipe> getRecipes()
     {
         return recipes;
     }
 
-    public int getNumberOfRecipes()
+    public Recipe findRecipeByName(String name)
     {
-        return recipes.size();
+        for (Recipe recipe : recipes)
+        {
+            if (recipe.getName().equalsIgnoreCase(name))
+            {
+                return recipe;
+            }
+        }
+        return null;
     }
 }

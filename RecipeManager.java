@@ -9,12 +9,9 @@
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.14.2026
- */
-
-/**
- * Purpose: The responsibility of RecipeManager is to manage the recipe book.
+ * Date/Version: 04.23.2026
  *
+ * Responsibilities of class:
  * RecipeManager has-a RecipeBook.
  * RecipeManager helps connect program logic to recipe data.
  */
@@ -45,5 +42,10 @@ public class RecipeManager
     public int getNumberOfRecipes()
     {
         return recipeBook.getNumberOfRecipes();
+    }
+
+    public Recipe findRecipeByName(String name)
+    {
+        return recipeBook.findRecipeByName(name);
     }
 }
