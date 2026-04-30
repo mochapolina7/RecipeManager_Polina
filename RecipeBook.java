@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.23.2026
+ * Date/Version: 04.28.2026
  *
  * Responsibilities of class:
- * RecipeBook has-many Recipe objects.
+ * RecipeBook has-many recipes.
  * RecipeBook stores and manages a collection of recipes.
  */
 public class RecipeBook

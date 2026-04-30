@@ -9,10 +9,10 @@
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.23.2026
+ * Date/Version: 04.28.2026
  *
  * Responsibilities of class:
- * Ingredient is a simple class.
+ * Ingredient is-a simple class.
  * Ingredient has-a name and quantity.
  */
 public class Ingredient

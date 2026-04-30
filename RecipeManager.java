@@ -9,11 +9,11 @@
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.23.2026
+ * Date/Version: 04.28.2026
  *
  * Responsibilities of class:
  * RecipeManager has-a RecipeBook.
- * RecipeManager helps connect program logic to recipe data.
+ * RecipeManager connects program logic to recipe data.
  */
 public class RecipeManager
 {
