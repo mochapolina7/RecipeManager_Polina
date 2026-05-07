@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -14,12 +16,13 @@ import javax.swing.event.ListSelectionListener;
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.28.2026
+ * Date/Version: 05.07.2026
  *
  * Responsibilities of class:
  * RecipeGUI has-a RecipeManager.
  * RecipeGUI has-a JList of recipe names.
  * RecipeGUI has-a JTextArea to display recipe details.
+ * RecipeGUI has buttons for adding and removing recipes.
  * RecipeGUI displays a simple graphical interface for the Recipe Manager.
  */
 public class RecipeGUI extends JFrame
@@ -44,12 +47,7 @@ public class RecipeGUI extends JFrame
         titleLabel.setFont(new Font("Arial", Font.BOLD, 22));
         add(titleLabel, BorderLayout.NORTH);
 
-        listModel = new DefaultListModel<>();
-
-        for (Recipe recipe : manager.getRecipeBook().getRecipes())
-        {
-            listModel.addElement(recipe.getName());
-        }
+        listModel = new DefaultListModel<String>();
 
         recipeList = new JList<String>(listModel);
         JScrollPane listScrollPane = new JScrollPane(recipeList);
@@ -72,6 +70,8 @@ public class RecipeGUI extends JFrame
 
         add(buttonPanel, BorderLayout.SOUTH);
 
+        refreshRecipeList();
+
         recipeList.addListSelectionListener(new ListSelectionListener()
         {
             @Override
@@ -79,28 +79,96 @@ public class RecipeGUI extends JFrame
             {
                 if (!e.getValueIsAdjusting())
                 {
-                    String selected = recipeList.getSelectedValue();
+                    showSelectedRecipe();
+                }
+            }
+        });
+
+        addButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String recipeName = JOptionPane.showInputDialog("Enter recipe name:");
+
+                if (recipeName != null && recipeName.length() > 0)
+                {
+                    DessertRecipe newRecipe = new DessertRecipe(
+                        recipeName,
+                        "Dessert",
+                        30,
+                        "1. Add instructions here."
+                    );
+
+                    newRecipe.addIngredient(new Ingredient("Ingredient", "Amount"));
+
+                    manager.addRecipe(newRecipe);
+                    refreshRecipeList();
+                }
+            }
+        });
+
+        removeButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String selected = recipeList.getSelectedValue();
+
+                if (selected != null)
+                {
                     Recipe recipe = manager.findRecipeByName(selected);
 
                     if (recipe != null)
                     {
-                        String details = recipe.toString() + "\n\n";
-                        details += "Ingredients:\n";
-
-                        for (Ingredient ingredient : recipe.getIngredients())
-                        {
-                            details += "- " + ingredient + "\n";
-                        }
-
-                        details += "\n\nInstructions:\n";
-                        details += recipe.getInstructions();
-
-                        recipeDetails.setText(details);
+                        manager.removeRecipe(recipe);
+                        refreshRecipeList();
+                        recipeDetails.setText("");
                     }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Please select a recipe to remove.");
                 }
             }
         });
 
         setVisible(true);
+    }
+
+    private void refreshRecipeList()
+    {
+        listModel.clear();
+
+        for (Recipe recipe : manager.getRecipeBook().getRecipes())
+        {
+            listModel.addElement(recipe.getName());
+        }
+    }
+
+    private void showSelectedRecipe()
+    {
+        String selected = recipeList.getSelectedValue();
+
+        if (selected != null)
+        {
+            Recipe recipe = manager.findRecipeByName(selected);
+
+            if (recipe != null)
+            {
+                String details = recipe.toString() + "\n\n";
+                details += "Ingredients:\n";
+
+                for (Ingredient ingredient : recipe.getIngredients())
+                {
+                    details += "- " + ingredient + "\n";
+                }
+
+                details += "\n\nInstructions:\n";
+                details += recipe.getInstructions();
+
+                recipeDetails.setText(details);
+            }
+        }
     }
 }
