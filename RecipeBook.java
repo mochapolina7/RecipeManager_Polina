@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.28.2026
+ * Date/Version: 05.12.2026
  *
  * Responsibilities of class:
  * RecipeBook has-many recipes.
@@ -36,6 +36,11 @@ public class RecipeBook
         recipes.remove(recipe);
     }
 
+    public void clearRecipes()
+    {
+        recipes.clear();
+    }
+
     public int getNumberOfRecipes()
     {
         return recipes.size();
@@ -55,6 +60,7 @@ public class RecipeBook
                 return recipe;
             }
         }
+
         return null;
     }
 }

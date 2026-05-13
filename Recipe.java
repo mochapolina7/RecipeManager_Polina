@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * Java, Java, Java: Object-Oriented Problem Solving
  * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
  *
- * Date/Version: 04.28.2026
+ * Date/Version: 05.12.2026
  *
  * Responsibilities of class:
  * Recipe is-an abstract parent class.
  * Recipe has-a name, category, cook time, and instructions.
  * Recipe has-many ingredients.
- * Recipe is a parent class for specific recipe types.
+ * Recipe is a super class for specific recipe types.
  */
 public abstract class Recipe
 {

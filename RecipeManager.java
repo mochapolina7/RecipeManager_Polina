@@ -9,7 +9,7 @@
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 04.28.2026
+ * Date/Version: 05.12.2026
  *
  * Responsibilities of class:
  * RecipeManager has-a RecipeBook.
@@ -37,6 +37,11 @@ public class RecipeManager
     public void removeRecipe(Recipe recipe)
     {
         recipeBook.removeRecipe(recipe);
+    }
+
+    public void clearRecipes()
+    {
+        recipeBook.clearRecipes();
     }
 
     public int getNumberOfRecipes()
