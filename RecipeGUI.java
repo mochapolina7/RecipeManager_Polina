@@ -22,7 +22,7 @@ import java.util.Scanner;
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  *
- * Date/Version: 05.12.2026
+ * Date/Version: 05.19.2026
  *
  * Responsibilities of class:
  * RecipeGUI has-a RecipeManager.
@@ -257,9 +257,11 @@ public class RecipeGUI extends JFrame
 
     private void saveRecipesToFile()
     {
+        PrintWriter output = null;
+
         try
         {
-            PrintWriter output =
+            output =
                 new PrintWriter(
                     new File("recipes.txt"));
 
@@ -285,8 +287,6 @@ public class RecipeGUI extends JFrame
                 }
             }
 
-            output.close();
-
             JOptionPane.showMessageDialog(
                 null,
                 "Recipes saved successfully.");
@@ -297,19 +297,28 @@ public class RecipeGUI extends JFrame
                 null,
                 "Error saving file.");
         }
+        finally
+        {
+            if (output != null)
+            {
+                output.close();
+            }
+        }
     }
 
     private void loadRecipesFromFile()
     {
+        Scanner input = null;
+
         try
         {
+            input =
+                new Scanner(
+                    new File("recipes.txt"));
+
             manager.clearRecipes();
 
             recipeDetails.setText("");
-
-            Scanner input =
-                new Scanner(
-                    new File("recipes.txt"));
 
             while (input.hasNextLine())
             {
@@ -379,8 +388,6 @@ public class RecipeGUI extends JFrame
                 }
             }
 
-            input.close();
-
             refreshRecipeList();
 
             JOptionPane.showMessageDialog(
@@ -398,6 +405,13 @@ public class RecipeGUI extends JFrame
             JOptionPane.showMessageDialog(
                 null,
                 "Error loading recipes.");
+        }
+        finally
+        {
+            if (input != null)
+            {
+                input.close();
+            }
         }
     }
 
